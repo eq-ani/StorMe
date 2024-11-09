@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17.0
+    container_name: storme_database
+    environment:
+      POSTGRES_USER: storme_user
+      POSTGRES_PASSWORD: storme_password
+      POSTGRES_DB: storme_database
+    ports:
+      - "5433:5432"  # Changed host port to 5433, container still uses 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
