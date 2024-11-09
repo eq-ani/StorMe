@@ -1,4 +1,4 @@
-INSERT INTO renter_ppid (
+INSERT INTO storme.user_ppid (
     first_name, middle_name, last_name, preferred_name, gender, date_of_birth, profile_picture_url,
     email, secondary_email, phone_number, alternate_phone_number, preferred_contact_method,
     address_line_1, address_line_2, city, state_province, postal_code, country,
