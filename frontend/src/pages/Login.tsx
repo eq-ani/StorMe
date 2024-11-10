@@ -27,7 +27,7 @@ const Login: React.FC = () => {
         alert("Login successful!");
         setEmail("");
         setPassword("");
-       // window.location.href = "/profile";
+        window.location.href = "/"; 
       } else {
         setError(data.message || "Login failed");
       }
@@ -36,6 +36,7 @@ const Login: React.FC = () => {
       setError("An error occurred. Please try again.");
     }
   };
+  
 
   return (
     <div>

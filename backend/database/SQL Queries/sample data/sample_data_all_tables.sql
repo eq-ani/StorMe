@@ -9,14 +9,14 @@ VALUES
     ('Evan', 'Davis', 'Evan', 'Male', '1999-09-09', 'evan@example.com', 'evan_d', 'hashed_password', 'UMass', 'U005', 'active');
 
 -- Insert host entries for Alice and Bob with property details
-INSERT INTO storme.host_db (user_id, price, size, stays_count, stars_avg, address_line_1, city, state_province, postal_code, country, image_url)
+INSERT INTO storme.host_db (user_id, price, size, stays_count, stars_avg, address_line_1, city, state_province, postal_code, country, image_url, school)
 VALUES 
-    (1, 15.00, '10x10 ft', 0, 0.0, '123 Main St', 'Amherst', 'MA', '01002', 'USA', 'https://www.pufftonvillage.com/wp-content/uploads/PV100_0121_one_bdrm_garden_sharp.jpg'),  -- Alice as host
-    (2, 20.00, '15x10 ft', 0, 0.0, '456 Maple Ave', 'Amherst', 'MA', '01002', 'USA', 'https://images1.apartments.com/i2/Cc8apscnn2f9a2YCddQiCLRjRkLoqn9b4qNTPXAqgUc/111/fieldstone---slate-undergraduate-housing-amherst-ma-fieldstone---slate-undergraduate-housing.jpg'),
-    (2, 10.00, '15x10 ft', 0, 0.0, '987 Street Ave', 'Amherst', 'MA', '01002', 'USA', 'https://thedesigncure.com/wp-content/uploads/2020/07/5a243513a69b150001f56c31_emptyroom6.jpg'), -- Bob as host
-    (1, 15.00, '10x10 ft', 0, 0.0, '123 Bull St', 'Amherst', 'MA', '01002', 'USA', 'https://thumbs.dreamstime.com/b/empty-small-walk-closet-shelves-carpet-floor-northwest-usa-76323472.jpg'),  -- Alice as host
-    (2, 20.00, '15x10 ft', 0, 0.0, '456 Oak Ave', 'Amherst', 'MA', '01002', 'USA', 'https://www.rent.com/blog/wp-content/uploads/2023/02/apartment_building.jpg'),
-    (1, 20.00, '15x10 ft', 0, 0.0, '987 Amherst Ave', 'Amherst', 'MA', '01002', 'USA', 'https://upload.wikimedia.org/wikipedia/commons/d/d4/The_Lauren_condo_Bethesda_MD_2021-12-12_10-11-55_1.jpg'); -- Bob as host
+    (1, 15.00, '10x10 ft', 0, 0.0, '123 Main St', 'Amherst', 'MA', '01002', 'USA', 'https://www.pufftonvillage.com/wp-content/uploads/PV100_0121_one_bdrm_garden_sharp.jpg', 'UMass'),  -- Alice as host
+    (2, 20.00, '15x10 ft', 0, 0.0, '456 Maple Ave', 'Amherst', 'MA', '01002', 'USA', 'https://images1.apartments.com/i2/Cc8apscnn2f9a2YCddQiCLRjRkLoqn9b4qNTPXAqgUc/111/fieldstone---slate-undergraduate-housing-amherst-ma-fieldstone---slate-undergraduate-housing.jpg', 'UMass'),
+    (2, 10.00, '15x10 ft', 0, 0.0, '987 Street Ave', 'Amherst', 'MA', '01002', 'USA', 'https://thedesigncure.com/wp-content/uploads/2020/07/5a243513a69b150001f56c31_emptyroom6.jpg', 'MIT'), -- Bob as host
+    (1, 15.00, '10x10 ft', 0, 0.0, '123 Bull St', 'Amherst', 'MA', '01002', 'USA', 'https://thumbs.dreamstime.com/b/empty-small-walk-closet-shelves-carpet-floor-northwest-usa-76323472.jpg', 'Boston University'),  -- Alice as host
+    (2, 20.00, '15x10 ft', 0, 0.0, '456 Oak Ave', 'Amherst', 'MA', '01002', 'USA', 'https://www.rent.com/blog/wp-content/uploads/2023/02/apartment_building.jpg', 'Harvard'),
+    (1, 20.00, '15x10 ft', 0, 0.0, '987 Amherst Ave', 'Amherst', 'MA', '01002', 'USA', 'https://upload.wikimedia.org/wikipedia/commons/d/d4/The_Lauren_condo_Bethesda_MD_2021-12-12_10-11-55_1.jpg', 'UMass'); -- Bob as host
 
 
 -- Insert renter entries for Charlie, Diana, and Evan
