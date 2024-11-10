@@ -9,4 +9,8 @@ export interface Property {
   stays_count: number;
   review_comm: string;
   review_num: number;
+  temp_control: boolean;
+  allergen_free: boolean;
+  big_access: boolean;
+  accessibility: boolean;
 }

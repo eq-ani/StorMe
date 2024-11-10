@@ -22,6 +22,12 @@ const Listing: React.FC = () => {
   const [school, setSchool] = useState("");
   const [error, setError] = useState<string | null>(null);
 
+  // Checkbox states
+  const [tempControlled, setTempControlled] = useState(false);
+  const [allergenFree, setAllergenFree] = useState(false);
+  const [bigAccess, setBigAccess] = useState(false);
+  const [accessible, setAccessible] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -57,6 +63,10 @@ const Listing: React.FC = () => {
           country,
           image_url: imageUrl,
           school,
+          temp_control: tempControlled,
+          allergen_free: allergenFree,
+          big_access: bigAccess,
+          accessibility: accessible,
         }),
       });
       const data = await response.json();
@@ -73,7 +83,10 @@ const Listing: React.FC = () => {
         setCountry("");
         setImageUrl("");
         setSchool("");
-        window.location.href = "/search"; 
+        setTempControlled(false);
+        setAllergenFree(false);
+        setBigAccess(false);
+        setAccessible(false);
       } else {
         setError(data.message || "Submission failed");
       }
@@ -273,6 +286,46 @@ const Listing: React.FC = () => {
                   </option>
                 ))}
               </select>
+            </div>
+
+            {/* Checkbox Fields */}
+            <div className="flex flex-col gap-2 mt-4">
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={tempControlled}
+                  onChange={() => setTempControlled(!tempControlled)}
+                  className="mr-2"
+                />
+                Temperature Controlled
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={allergenFree}
+                  onChange={() => setAllergenFree(!allergenFree)}
+                  className="mr-2"
+                />
+                Allergen Free
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={bigAccess}
+                  onChange={() => setBigAccess(!bigAccess)}
+                  className="mr-2"
+                />
+                Large Item Access
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={accessible}
+                  onChange={() => setAccessible(!accessible)}
+                  className="mr-2"
+                />
+                Accessible
+              </label>
             </div>
 
             <button

@@ -11,18 +11,18 @@ VALUES
     
 
 -- Insert host entries for Alice and Bob with property details
-    INSERT INTO storme.host_db (user_id, property_id, price, size, address_line_1, city, state_province, postal_code, country, image_url, school, stays_count, review_comm, review_num)
+    INSERT INTO storme.host_db (user_id, property_id, price, size, address_line_1, city, state_province, postal_code, country, image_url, school, stays_count, review_comm, review_num, temp_control, allergen_free, big_access, accessibility)
 VALUES
-    (1, 101, 15, '10x10 ft', '1234 Storage St.', 'Amherst', 'MA', '01002', 'USA', 'https://st.hzcdn.com/fimgs/5f4264b804f395ce_9753-w240-h180-b0-p0--.jpg', 'UMass', 15, 'Great space, very secure.', 45),
-    (1, 102, 20, '15x15 ft', '5678 Rental Rd.', 'Cambridge', 'MA', '02138', 'USA', 'https://www.neighbor.com/storage-blog/wp-content/uploads/2023/09/AdobeStock_316541746.jpg', 'Harvard', 25, 'Convenient location and good size.', 67),
-    (2, 103, 18, '12x12 ft', '1010 Storage Blvd.', 'Boston', 'MA', '02215', 'USA', 'https://live.staticflickr.com/4024/4390395225_bc382b64a7_b.jpg', 'Boston University', 30, 'Perfect for summer storage needs.', 53),
-    (2, 104, 22, '20x20 ft', '2020 Rent Dr.', 'Cambridge', 'MA', '02139', 'USA', 'https://214pressurewashing.com/wp-content/uploads/2017/09/apartment-9-11-17.jpeg', 'MIT', 5, 'A bit pricey but worth it.', 85),
-    (3, 105, 13, '8x10 ft', '3030 Depot Ln.', 'Boston', 'MA', '02116', 'USA', 'https://images.squarespace-cdn.com/content/v1/4fcf5c8684aef9ce6e0a44b0/9ac3151f-b9df-44bf-8e46-965f54bc11e2/Empty+bedroom+with+golden+oak+floor.jpg', 'Northeastern University', 18, 'Small but secure and clean.', 72),
-    (3, 106, 17, '10x15 ft', '4040 Storage Cir.', 'Amherst', 'MA', '01003', 'USA', 'https://www.pufftonvillage.com/wp-content/uploads/PV100_0121_one_bdrm_garden_sharp.jpg', 'UMass', 22, 'Good size and accessibility.', 64),
-    (4, 107, 25, '25x20 ft', '5050 Rent Ave.', 'Cambridge', 'MA', '02140', 'USA', 'https://i.ytimg.com/vi/emSzZ1h0T30/maxresdefault.jpg', 'Harvard', 35, 'Spacious and highly recommended.', 92),
-    (4, 108, 14, '10x8 ft', '6060 Rental Ln.', 'Boston', 'MA', '02215', 'USA', 'https://img.freepik.com/premium-photo/small-empty-room-with-walls-painted-plain-offwhite-color-french-oak-parquet-floors_449839-10640.jpg', 'Boston University', 12, 'Affordable and convenient.', 55),
-    (2, 109, 21, '18x18 ft', '7070 Storage St.', 'Cambridge', 'MA', '02142', 'USA', 'https://thumbs.dreamstime.com/b/empty-small-walk-closet-shelves-carpet-floor-northwest-usa-76323472.jpg', 'MIT', 8, 'Ideal for larger items.', 78),
-    (5, 15, 16, '12x10 ft', '8080 Depot Blvd.', 'Boston', 'MA', '02118', 'USA', 'https://bienalclosets.com/wp-content/uploads/2023/06/dressing-room-small-oneroom-apartment-1.jpg', 'Northeastern University', 20, 'Great location near campus.', 66);
+    (1, 101, 15, '10x10 ft', '1234 Storage St.', 'Amherst', 'MA', '01002', 'USA', 'https://st.hzcdn.com/fimgs/5f4264b804f395ce_9753-w240-h180-b0-p0--.jpg', 'UMass', 15, 'Great space, very secure.', 45, TRUE, FALSE, TRUE, FALSE),
+    (1, 102, 20, '15x15 ft', '5678 Rental Rd.', 'Cambridge', 'MA', '02138', 'USA', 'https://www.neighbor.com/storage-blog/wp-content/uploads/2023/09/AdobeStock_316541746.jpg', 'Harvard', 25, 'Convenient location and good size.', 67, FALSE, TRUE, FALSE, TRUE),
+    (2, 103, 18, '12x12 ft', '1010 Storage Blvd.', 'Boston', 'MA', '02215', 'USA', 'https://live.staticflickr.com/4024/4390395225_bc382b64a7_b.jpg', 'Boston University', 30, 'Perfect for summer storage needs.', 53, FALSE, FALSE, FALSE, FALSE),
+    (2, 104, 22, '20x20 ft', '2020 Rent Dr.', 'Cambridge', 'MA', '02139', 'USA', 'https://214pressurewashing.com/wp-content/uploads/2017/09/apartment-9-11-17.jpeg', 'MIT', 5, 'A bit pricey but worth it.', 85, FALSE, FALSE, TRUE, TRUE),
+    (3, 105, 13, '8x10 ft', '3030 Depot Ln.', 'Boston', 'MA', '02116', 'USA', 'https://images.squarespace-cdn.com/content/v1/4fcf5c8684aef9ce6e0a44b0/9ac3151f-b9df-44bf-8e46-965f54bc11e2/Empty+bedroom+with+golden+oak+floor.jpg', 'Northeastern University', 18, 'Small but secure and clean.', 72, TRUE, FALSE, TRUE, FALSE),
+    (3, 106, 17, '10x15 ft', '4040 Storage Cir.', 'Amherst', 'MA', '01003', 'USA', 'https://www.pufftonvillage.com/wp-content/uploads/PV100_0121_one_bdrm_garden_sharp.jpg', 'UMass', 22, 'Good size and accessibility.', 64, FALSE, TRUE, FALSE, TRUE),
+    (4, 107, 25, '25x20 ft', '5050 Rent Ave.', 'Cambridge', 'MA', '02140', 'USA', 'https://i.ytimg.com/vi/emSzZ1h0T30/maxresdefault.jpg', 'Harvard', 35, 'Spacious and highly recommended.', 92, TRUE, TRUE, TRUE, FALSE),
+    (4, 108, 14, '10x8 ft', '6060 Rental Ln.', 'Boston', 'MA', '02215', 'USA', 'https://img.freepik.com/premium-photo/small-empty-room-with-walls-painted-plain-offwhite-color-french-oak-parquet-floors_449839-10640.jpg', 'Boston University', 12, 'Affordable and convenient.', 55, FALSE, FALSE, TRUE, TRUE),
+    (2, 109, 21, '18x18 ft', '7070 Storage St.', 'Cambridge', 'MA', '02142', 'USA', 'https://thumbs.dreamstime.com/b/empty-small-walk-closet-shelves-carpet-floor-northwest-usa-76323472.jpg', 'MIT', 8, 'Ideal for larger items.', 78, TRUE, FALSE, FALSE, TRUE),
+    (5, 15, 16, '12x10 ft', '8080 Depot Blvd.', 'Boston', 'MA', '02118', 'USA', 'https://bienalclosets.com/wp-content/uploads/2023/06/dressing-room-small-oneroom-apartment-1.jpg', 'Northeastern University', 20, 'Great location near campus.', 66, FALSE, TRUE, TRUE, FALSE);
 
 -- Insert renter entries for Charlie, Diana, and Evan
 INSERT INTO storme.renter_db (user_id, bag_id, bag_image_url, stays_count, stars_avg)

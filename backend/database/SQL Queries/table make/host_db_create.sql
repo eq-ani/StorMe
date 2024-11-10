@@ -19,7 +19,7 @@ CREATE TABLE storme.host_db (
     temp_control BOOLEAN,
     allergen_free BOOLEAN,
     big_access BOOLEAN,
-    accessibility INTEGER,
+    accessibility BOOLEAN,
     image_url VARCHAR(1024),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

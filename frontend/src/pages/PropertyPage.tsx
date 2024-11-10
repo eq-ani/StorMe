@@ -143,7 +143,7 @@ const PropertyPage: React.FC = () => {
                 <Snowflake className="h-5 w-5 text-[#881c1c] mx-4" />
                 <div>
                   <p className="text-sm text-gray-500">Temperature Control</p>
-                  <p className="text-lg">Yes</p>
+                  <p className="text-lg">{prop.temp_control ? "Yes" : "No"}</p>
                 </div>
               </div>
 
@@ -151,7 +151,7 @@ const PropertyPage: React.FC = () => {
                 <PawPrint className="h-5 w-5 text-[#881c1c] mx-4" />
                 <div>
                   <p className="text-sm text-gray-500">Allergen Free</p>
-                  <p className="text-lg">Yes</p>
+                  <p className="text-lg">{prop.allergen_free ? "Yes" : "No"}</p>
                 </div>
               </div>
             </div>
@@ -160,7 +160,7 @@ const PropertyPage: React.FC = () => {
                 <Sofa className="h-5 w-5 text-[#881c1c] mx-4" />
                 <div>
                   <p className="text-sm text-gray-500">Large Space</p>
-                  <p className="text-lg">Yes</p>
+                  <p className="text-lg">{prop.big_access ? "Yes" : "No"}</p>
                 </div>
               </div>
 
@@ -168,7 +168,7 @@ const PropertyPage: React.FC = () => {
                 <Accessibility className="h-5 w-5 text-[#881c1c] mx-4" />
                 <div>
                   <p className="text-sm text-gray-500">Accessible</p>
-                  <p className="text-lg">Yes</p>
+                  <p className="text-lg">{prop.accessibility ? "Yes" : "No"}</p>
                 </div>
               </div>
             </div>
