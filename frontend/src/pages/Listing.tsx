@@ -21,8 +21,6 @@ const Listing: React.FC = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [school, setSchool] = useState("");
   const [error, setError] = useState<string | null>(null);
-
-  // Checkbox states
   const [tempControlled, setTempControlled] = useState(false);
   const [allergenFree, setAllergenFree] = useState(false);
   const [bigAccess, setBigAccess] = useState(false);
@@ -97,9 +95,9 @@ const Listing: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col overflow-y-auto">
       <Navbar />
-      <div className="relative flex items-center justify-center h-screen">
+      <div className="mt-16 flex-grow flex items-center justify-center">
         <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
           <div className="text-2xl font-bold text-center mb-4">
             Listing Application
@@ -288,7 +286,6 @@ const Listing: React.FC = () => {
               </select>
             </div>
 
-            {/* Checkbox Fields */}
             <div className="flex flex-col gap-2 mt-4">
               <label className="flex items-center">
                 <input

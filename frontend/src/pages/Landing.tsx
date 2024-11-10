@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import { Search, Home } from "lucide-react";
+import { Search, HousePlus } from "lucide-react";
 
 const Landing: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ const Landing: React.FC = () => {
                 window.location.href = "/Listing"; // Update this URL for the new button
               }}
             >
-              <Home size={24} /> {/* You can change this icon if needed */}
+              <HousePlus size={24} /> {/* You can change this icon if needed */}
               List a Space
             </button>
           </div>

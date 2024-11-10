@@ -1,4 +1,4 @@
-import { Search, Home } from "lucide-react";
+import { Search, HousePlus } from "lucide-react";
 import React from "react";
 import { useLocation } from "react-router-dom";
 
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
                 window.location.href = "/listing";
               }}
             >
-              <Home size={32} color="#881c1c" />
+              <HousePlus size={32} color="#881c1c" />
             </button>
           </>
         )}
