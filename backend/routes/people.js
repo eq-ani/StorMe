@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../database/db'); // Database connection
+const pool = require('../database/db'); // connect to database
 
-// Endpoint to get all properties
+
 router.get('/people', async (req, res) => {
   try {
     const result = await pool.query('SELECT id, first_name, last_name, phone_number, email, profile_picture_url FROM storme.user_ppid');

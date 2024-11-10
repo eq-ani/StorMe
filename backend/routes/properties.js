@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../database/db'); // Database connection
+const pool = require('../database/db'); 
 
-// Endpoint to get all properties
+
 router.get('/properties', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM storme.host_db');

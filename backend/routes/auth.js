@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, salt);
       console.log('Hashed password generated.');
   
-      // Insert new user
+      // new user
       await pool.query(
         `INSERT INTO storme.user_ppid (email, password_hash, date_of_account_creation) VALUES ($1, $2, NOW())`,
         [email, hashedPassword]
@@ -42,7 +42,7 @@ router.post('/register', async (req, res) => {
     console.log('Received login request:', req.body);
 
     try {
-        // Check if the user exists
+        
         const userResult = await pool.query('SELECT * FROM storme.user_ppid WHERE email = $1', [email]);
         const user = userResult.rows[0];
 
@@ -50,14 +50,14 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ message: 'Invalid email or password' });
         }
 
-        // Compare provided password with stored hash
+        
         const isMatch = await bcrypt.compare(password, user.password_hash);
 
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid email or password' });
         }
 
-        // If password matches, login is successful
+        
         console.log('Login successful');
         res.status(200).json({ message: 'Login successful', user: { email: user.email, first_name: user.first_name, last_name: user.last_name } });
     } catch (error) {

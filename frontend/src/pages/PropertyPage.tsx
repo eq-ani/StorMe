@@ -2,16 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Property } from "../types/Property";
-import { people } from "../types/people";  // Updated to import People type
+import { people } from "../types/people";  
 
 const PropertyPage: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([]);
-  const [people, setPeople] = useState<people[]>([]);  // Updated to use People state
-  const { id } = useParams<{ id: string }>();  // Get id from the URL
-  const propertyId = id ? parseInt(id, 10) : null;  // Handle undefined id
+  const [people, setPeople] = useState<people[]>([]);  
+  const { id } = useParams<{ id: string }>();  
+  const propertyId = id ? parseInt(id, 10) : null;  
 
   useEffect(() => {
-    // Fetch properties and people data from the backend
     const fetchProperties = async () => {
       const propertyResponse = await fetch("http://localhost:5000/api/properties");
       const propertyData = await propertyResponse.json();
@@ -33,14 +32,13 @@ const PropertyPage: React.FC = () => {
     return <div>Property not found</div>;
   }
 
-  // Find the person linked to the property by matching user_id in Property with id in People
+ 
   const person = people.find((p) => p.id === prop.user_id);
   if (!person) {
     return <div>Person information not found</div>;
   }
 
-  // Randomly pick a review if available
-  //const randomReview = person.reviews[Math.floor(Math.random() * person.reviews.length)];
+ 
 
   return (
     <div className="h-screen flex flex-col bg-gray-100">
