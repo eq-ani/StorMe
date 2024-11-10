@@ -70,15 +70,15 @@ const Search: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null); // used for event listener to close dropdown when clicked off
 
   useEffect(() => {
-    // Fetch properties from the backend when the component mounts
+    // fetch properties on load
     const fetchProperties = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/properties"); // Backend API endpoint
+        const response = await fetch("http://localhost:5000/api/properties"); // backend API endpoint
         if (!response.ok) {
           throw new Error("Failed to fetch properties");
         }
         const data = await response.json();
-        setProperties(data); // Set the fetched properties in state
+        setProperties(data);
       } catch (error) {
         console.error("Error fetching properties:", error);
       }

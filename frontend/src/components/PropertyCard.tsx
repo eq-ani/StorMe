@@ -18,11 +18,9 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
         />
 
         <div className="p-4 flex flex-col">
-          <div className="flex justify-between">
-            <h2 className="text-xl font-bold mb-2">
-              {property.address_line_1}
-            </h2>
-            <h3 className="bg-gray-600 rounded-full px-3 py-1 text-xs font-semibold text-white flex items-center">
+          <div className="flex justify-between mb-2">
+            <h2 className="text-xl font-bold">{property.address_line_1}</h2>
+            <h3 className="bg-gray-600 rounded-full px-3 text-sm text-white flex items-center">
               {property.school}
             </h3>
           </div>
