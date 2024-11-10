@@ -73,6 +73,7 @@ const Listing: React.FC = () => {
         setCountry("");
         setImageUrl("");
         setSchool("");
+        window.location.href = "/search"; 
       } else {
         setError(data.message || "Submission failed");
       }

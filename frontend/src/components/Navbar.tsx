@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { Search, Home } from "lucide-react";
 import React from "react";
 import { useLocation } from "react-router-dom";
 
@@ -26,13 +26,25 @@ const Navbar: React.FC = () => {
             <p className="text-3xl text-[#881c1c]">StorMe</p>
           </a>
         </div>
-        <button
-          onClick={() => {
-            window.location.href = "/search";
-          }}
-        >
-          <Search size={32} color="#881c1c" />
-        </button>
+
+        {!isLandingPage && (
+          <>
+            <button
+              onClick={() => {
+                window.location.href = "/search";
+              }}
+            >
+              <Search size={32} color="#881c1c" />
+            </button>
+            <button
+              onClick={() => {
+                window.location.href = "/listing";
+              }}
+            >
+              <Home size={32} color="#881c1c" />
+            </button>
+          </>
+        )}
       </div>
 
       <div className="hidden md:block">
