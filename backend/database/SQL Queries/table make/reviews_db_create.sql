@@ -6,6 +6,6 @@ CREATE TABLE storme.reviews_db (
     comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (user_id) REFERENCES storme.user_ppid(id),
-    FOREIGN KEY (booking_id) REFERENCES storme.bookings_db(booking_id)
+    FOREIGN KEY (user_id) REFERENCES storme.user_ppid(id) ON DELETE CASCADE, 
+    FOREIGN KEY (booking_id) REFERENCES storme.bookings_db(booking_id) ON DELETE CASCADE
 );

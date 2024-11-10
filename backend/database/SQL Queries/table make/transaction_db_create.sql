@@ -8,7 +8,7 @@ CREATE TABLE storme.transaction_db (
     transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(20) CHECK (status IN ('completed', 'pending', 'failed')),
     
-    FOREIGN KEY (booking_id) REFERENCES storme.bookings_db(booking_id),
-    FOREIGN KEY (payer_id) REFERENCES storme.user_ppid(id),
-    FOREIGN KEY (payee_id) REFERENCES storme.user_ppid(id)
+    FOREIGN KEY (booking_id) REFERENCES storme.bookings_db(booking_id) ON DELETE CASCADE,
+    FOREIGN KEY (payer_id) REFERENCES storme.user_ppid(id) ON DELETE CASCADE,
+    FOREIGN KEY (payee_id) REFERENCES storme.user_ppid(id) ON DELETE CASCADE
 );

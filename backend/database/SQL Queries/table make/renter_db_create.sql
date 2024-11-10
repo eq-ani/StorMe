@@ -8,5 +8,5 @@ CREATE TABLE storme.renter_db (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (user_id) REFERENCES storme.user_ppid(id)
+    FOREIGN KEY (user_id) REFERENCES storme.user_ppid(id) ON DELETE CASCADE
 );

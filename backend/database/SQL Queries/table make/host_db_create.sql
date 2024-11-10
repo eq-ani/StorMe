@@ -13,7 +13,7 @@ CREATE TABLE storme.host_db (
     postal_code VARCHAR(20),
     country VARCHAR(50),
     school VARCHAR(255),
-    active BOOLEAN
+    active BOOLEAN,
     temp_control BOOLEAN,
     allergen_free BOOLEAN,
     big_access BOOLEAN,
@@ -23,5 +23,5 @@ CREATE TABLE storme.host_db (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     
 
-    FOREIGN KEY (user_id) REFERENCES storme.user_ppid(id)
+    FOREIGN KEY (user_id) REFERENCES storme.user_ppid(id) ON DELETE CASCADE
 );
