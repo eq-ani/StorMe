@@ -32,23 +32,23 @@ const Property: React.FC = () => {
 
   return (
     <div className="flex h-screen bg-gray-100">
-        <Navbar/>
-    <div className="flex flex-grow mt-16">
-      {/* Property Details */}
-      <div className="w-3/4 p-8">
-        <h1 className="text-3xl font-bold mb-4">{property.address}</h1>
-        <div className="border-4 border-gray-700 p-2 mb-4">
-        <img
-          src="/assets/images/hackathon-logo.svg"
-          alt="property"
-          className="w-full h-96 object-contain mb-4"
-        />
+      <Navbar />
+      <div className="flex flex-grow mt-16">
+        {/* Property Details */}
+        <div className="w-3/4 p-8">
+          <h1 className="text-3xl font-bold mb-4">{property.address}</h1>
+          <div className="border-4 border-gray-700 p-2 mb-4">
+            <img
+              src="/assets/images/hackathon-logo.svg"
+              alt="property"
+              className="w-full h-96 object-contain mb-4"
+            />
+          </div>
+          <p className="text-lg mb-2">Price: ${property.price}</p>
+          <p className="text-lg mb-2">Space: {property.space}</p>
+          <p className="text-base text-gray-700">{property.description}</p>
         </div>
-        <p className="text-lg mb-2">Price: ${property.price}</p>
-        <p className="text-lg mb-2">Space: {property.space}</p>
-        <p className="text-base text-gray-700">{property.description}</p>
       </div>
-    </div>
     </div>
   );
 };
