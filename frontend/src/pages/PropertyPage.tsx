@@ -5,7 +5,6 @@ import { Property } from "../types/Property";
 import { people } from "../types/people"; // Updated to import People type
 import {
   Accessibility,
-  AlertTriangle,
   ArrowLeft,
   Calendar,
   Mail,
@@ -18,10 +17,13 @@ import {
 } from "lucide-react";
 
 const PropertyPage: React.FC = () => {
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [people, setPeople] = useState<people[]>([]); // Updated to use People state
-  const { id } = useParams<{ id: string }>(); // Get id from the URL
-  const propertyId = id ? parseInt(id, 10) : null; // Handle undefined id
+  const [properties, setProperties] = useState<Property[]>([]); // needed to access information about the current property
+  const [people, setPeople] = useState<people[]>([]); // needed to access information about the person hosting the current property
+  const { id } = useParams<{ id: string }>();
+  const propertyId = id ? parseInt(id, 10) : null;
+  const [isModalOpen, setIsModalOpen] = useState(false); // for the booking form
+
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -136,8 +138,49 @@ const PropertyPage: React.FC = () => {
                   - Anonymous Reviewer
                 </p>
               </div>
+              <button
+                onClick={toggleModal}
+                className="bg-[#881c1c] text-white rounded-md px-4 py-2 hover:bg-[#701515] focus:outline-none"
+              >
+                Request to Rent
+              </button>
+              {isModalOpen && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                  <div className="bg-white p-6 rounded-lg shadow-lg w-80">
+                    <h2 className="text-lg font-semibold mb-4">
+                      Request to Rent
+                    </h2>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Start Date
+                      <input
+                        type="date"
+                        className="mt-1 block w-full px-3 py-2 border rounded-md"
+                      />
+                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mt-4">
+                      End Date
+                      <input
+                        type="date"
+                        className="mt-1 block w-full px-3 py-2 border rounded-md"
+                      />
+                    </label>
+                    <div className="flex justify-end mt-6">
+                      <button
+                        onClick={toggleModal}
+                        className="text-gray-500 mr-4"
+                      >
+                        Cancel
+                      </button>
+                      <button className="bg-[#881c1c] text-white rounded-md px-4 py-2">
+                        Confirm
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-            {/* property details */}
+
+            {/* more property details */}
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex items-center bg-white rounded-lg shadow-md py-4 flex-1">
                 <Snowflake className="h-5 w-5 text-[#881c1c] mx-4" />
@@ -173,23 +216,6 @@ const PropertyPage: React.FC = () => {
               </div>
             </div>
           </div>
-
-          {/* <div className="flex w-full">
-            <div className="w-1/5">
-              <img
-                src={person.profile_picture_url}
-                alt={person.first_name + " " + person.last_name}
-                className="w-full h-auto rounded-full object-cover mb-4"
-              />
-            </div>
-            <div className="flex flex-col">
-              <Mail className="h-4 w-4" />
-
-              <div className="flex">
-                <p>{person.email}</p>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>
