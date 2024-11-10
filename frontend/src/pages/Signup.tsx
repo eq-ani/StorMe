@@ -7,7 +7,7 @@ const Signup: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+    console.log("Form submitted with:", { email: gmail, password });
     if (!gmail || !password) {
       setError("Please fill in all fields");
       return;
@@ -17,7 +17,7 @@ const Signup: React.FC = () => {
       const response = await fetch("http://localhost:5000/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: gmail, password }),
+        body: JSON.stringify({ email: gmail, password: password }),
       });
       const data = await response.json();
   
@@ -29,6 +29,7 @@ const Signup: React.FC = () => {
         setError(data.message || "Signup failed");
       }
     } catch (err) {
+      console.error("Fetch error: ", err);
       setError("An error occurred. Please try again.");
     }
   };

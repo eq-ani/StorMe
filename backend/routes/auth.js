@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post('/register', async (req, res) => {
     const { email, password } = req.body;
+    console.log('Recieved signup request: ', req.body);
   
     try {
       console.log('Received signup request:', req.body);
