@@ -51,7 +51,7 @@ interface Property {
 
 const Search: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([]); // State for storing properties
-  const [searchQuery, setSearchQuery] = useState<string>("");
+
 
   useEffect(() => {
     // Fetch properties from the backend when the component mounts
