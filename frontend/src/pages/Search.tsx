@@ -1,56 +1,55 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import PropertyCard from "../components/PropertyCard";
+import { Property } from "../types/Property";
 
 const fakeProperties = [
   {
     id: 1,
-    address: "1234 Storage St.",
+    address_line_1: "1234 Storage St.",
     price: 100,
-    space: "10x10 feet",
+    size: "10x10 feet",
+    image_url: "",
   },
   {
     id: 2,
-    address: "5678 Rental Rd.",
+    address_line_1: "5678 Rental Rd.",
     price: 150,
-    space: "15x15 feet",
+    size: "15x15 feet",
+    image_url: "",
   },
   {
     id: 3,
-    address: "9876 Warehouse Ave.",
+    address_line_1: "9876 Warehouse Ave.",
     price: 200,
-    space: "20x20 feet",
+    size: "20x20 feet",
+    image_url: "",
   },
   {
     id: 4,
-    address: "1010 Storage Blvd.",
+    address_line_1: "1010 Storage Blvd.",
     price: 120,
-    space: "8x10 feet",
+    size: "8x10 feet",
+    image_url: "",
   },
   {
     id: 5,
-    address: "2020 Rent Dr.",
+    address_line_1: "2020 Rent Dr.",
     price: 180,
-    space: "12x12 feet",
+    size: "12x12 feet",
+    image_url: "",
   },
   {
     id: 6,
-    address: "3030 Depot Ln.",
+    address_line_1: "3030 Depot Ln.",
     price: 160,
-    space: "15x10 feet",
+    size: "15x10 feet",
+    image_url: "",
   },
 ];
 
-interface Property {
-  id: number;
-  address_line_1: string;
-  price: number;
-  size: string;
-  image_url: string;
-}
-
 const Search: React.FC = () => {
-  const [properties, setProperties] = useState<Property[]>([]); // State for storing properties
+  const [properties, setProperties] = useState<Property[]>([]);
 
   useEffect(() => {
     // Fetch properties from the backend when the component mounts

@@ -1,14 +1,7 @@
 import { prototype } from "events";
 import React from "react";
 import { Link } from "react-router-dom";
-
-interface Property {
-  id: number;
-  address_line_1: string;
-  price: number;
-  size: string;
-  image_url: string;
-}
+import { Property } from "../types/Property";
 
 interface PropertyCardProps {
   property: Property;
@@ -16,7 +9,7 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   return (
-    <Link to={`/property/${property.id}`} className="block"> {/* Wrap with Link to make it clickable */}
+    <Link to={`/property/${property.id}`} className="block">
       <div className="rounded-lg overflow-hidden shadow-md bg-[#881c1c] text-white flex flex-col h-full w-full">
         <img
           src={property.image_url}
