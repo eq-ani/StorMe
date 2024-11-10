@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Property } from "../types/Property";
-import { people } from "../types/people";  
+import { people } from "../types/people"; // Updated to import People type
+import { ArrowLeft, Calendar, Mail, MapPin, Ruler, Star } from "lucide-react";
 
 const PropertyPage: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([]);
-  const [people, setPeople] = useState<people[]>([]);  
-  const { id } = useParams<{ id: string }>();  
-  const propertyId = id ? parseInt(id, 10) : null;  
+  const [people, setPeople] = useState<people[]>([]); // Updated to use People state
+  const { id } = useParams<{ id: string }>(); // Get id from the URL
+  const propertyId = id ? parseInt(id, 10) : null; // Handle undefined id
 
   useEffect(() => {
     const fetchProperties = async () => {
-      const propertyResponse = await fetch("http://localhost:5000/api/properties");
+      const propertyResponse = await fetch(
+        "http://localhost:5000/api/properties"
+      );
       const propertyData = await propertyResponse.json();
       setProperties(propertyData);
     };
@@ -32,76 +35,112 @@ const PropertyPage: React.FC = () => {
     return <div>Property not found</div>;
   }
 
- 
   const person = people.find((p) => p.id === prop.user_id);
   if (!person) {
     return <div>Person information not found</div>;
   }
 
- 
-
   return (
-    <div className="h-screen flex flex-col bg-gray-100">
-      {/* Navbar */}
+    <div className="w-screen flex flex-col items-center">
       <Navbar />
 
-      {/* Main content container */}
-      <div className="flex justify-center py-24 flex-grow">
-        <div className="flex w-3/4 bg-white rounded-lg shadow-md h-auto">
-          {/* Left side - Property Info */}
-          <div className="w-2/3 p-8">
-            <h1 className="text-3xl font-bold mb-4">{prop.address_line_1}</h1>
-            <div className="border-4 border-gray-700 p-2 mb-4">
+      {/* main container */}
+      <div className="w-4/5 flex flex-col justify-center pt-32 flex-grow gap-6">
+        {/* property address */}
+        <div className="flex gap-4 items-center">
+          <Link to="/search" className="881c1c">
+            <ArrowLeft className="h-6 w-6" />
+          </Link>
+          <MapPin></MapPin>
+          <div className="text-2xl font-bold">{prop.address_line_1}</div>
+        </div>
+        <div className="flex gap-6">
+          {/* left container */}
+          <div className="w-2/3 flex flex-col gap-6">
+            {/* property image */}
+            <div className="aspect-[16/9] overflow-hidden rounded-xl border bg-muted">
               <img
-                src= {prop.image_url}
+                src={prop.image_url}
                 alt="property"
-                className="w-full h-96 object-contain mb-4"
+                className="w-full h-full object-cover"
               />
             </div>
-            <p className="text-lg mb-2">Price: ${prop.price}</p>
-            <p className="text-lg mb-2">Space: {prop.size}</p>
-          </div>
 
-          {/* Right side - People Info and Stats/Review */}
-          <div className="w-1/3 p-8">
-            {/* People Section */}
-            <div className="bg-gray-50 p-4 rounded-lg mb-6 mt-12">
-              <div className="flex flex-col items-center pt-6">
-                <img
-                  src={person.profile_picture_url}
-                  alt={person.first_name + " " + person.last_name}
-                  className="w-32 h-32 rounded-full object-cover mb-4"
-                />
-                <h2 className="text-xl font-semibold mb-2">{person.first_name + " " + person.last_name}</h2>
-                <p className="text-sm text-gray-600 mb-4">{person.email}</p>
-                <p className="text-sm text-gray-600">{person.phone_number}</p>
+            {/* property details */}
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex items-center bg-white rounded-lg shadow-md py-4 flex-1">
+                <Calendar className="h-5 w-5 text-[#881c1c] mx-4" />
+                <div>
+                  <p className="text-sm text-gray-500">Price</p>
+                  <p className="text-lg">${prop.price}/month</p>
+                </div>
+              </div>
+
+              <div className="flex items-center bg-white rounded-lg shadow-md py-4 flex-1">
+                <Ruler className="h-5 w-5 text-[#881c1c] mx-4" />
+                <div>
+                  <p className="text-sm text-gray-500">Space</p>
+                  <p className="text-lg">{prop.size}</p>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* People Stats Section */}
-            <div className="bg-blue-50 p-4 rounded-lg mb-6">
-              <div className="flex justify-between items-center mb-4">
-                <p className="text-sm text-gray-600">Rented {prop.stays_count} times</p>
-                {/* Star Rating next to the number of rents */}
+          {/* right container */}
+          <div className="w-1/3 flex flex-col p-6 gap-6 rounded-lg shadow-md self-start">
+            {/* upper div */}
+            <div className="flex items-center space-x-4">
+              <img
+                src={person.profile_picture_url}
+                alt={person.first_name + " " + person.last_name}
+                className="h-24 w-auto rounded-full object-cover"
+              />
+              <div>
+                <div className="text-xl">
+                  {person.first_name + " " + person.last_name}
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Mail className="h-4 w-4" />
+                  <div className="text-sm">{person.email}</div>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="bg-[gray] rounded-full px-3 py-1 text-sm text-white flex items-center">
+                  {"Rented " + prop.stays_count + " times"}
+                </div>
                 <div className="flex">
-                  {[...Array(5)].map((_, index) => (
-                    <svg
-                      key={index}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      fill={index < 5 ? "#FFD700" : "#D3D3D3"}
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-[#881c1c]" />
                   ))}
                 </div>
               </div>
-              <p className="text-sm text-gray-600">"{prop.review_comm}"</p> {/* Random review */}
-              <p className="text-sm text-gray-600 mt-2">- Anonymous Reviewer</p>
+              <blockquote className="text-sm italic text-muted-foreground">
+                {prop.review_comm}
+              </blockquote>
+              <p className="text-sm text-muted-foreground">
+                - Anonymous Reviewer
+              </p>
             </div>
           </div>
+
+          {/* <div className="flex w-full">
+            <div className="w-1/5">
+              <img
+                src={person.profile_picture_url}
+                alt={person.first_name + " " + person.last_name}
+                className="w-full h-auto rounded-full object-cover mb-4"
+              />
+            </div>
+            <div className="flex flex-col">
+              <Mail className="h-4 w-4" />
+
+              <div className="flex">
+                <p>{person.email}</p>
+              </div>
+            </div>
+          </div> */}
         </div>
       </div>
     </div>
