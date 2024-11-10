@@ -1,4 +1,4 @@
-
+--lol
 -- Insert 5 sample users
 INSERT INTO storme.user_ppid (first_name, last_name, preferred_name, gender, date_of_birth, email, username, password_hash, school, student_id, account_status, profile_picture_url)
 VALUES 
