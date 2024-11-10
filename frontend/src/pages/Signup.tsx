@@ -26,6 +26,7 @@ const Signup: React.FC = () => {
         alert("Signup successful!");
         setGmail("");
         setPassword("");
+        window.location.href = "/"; 
       } else {
         setError(data.message || "Signup failed");
       }
