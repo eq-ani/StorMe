@@ -6,4 +6,5 @@ ADD active BOOLEAN
 ADD temp_control BOOLEAN,
 ADD allergen_free BOOLEAN,
 ADD big_access BOOLEAN,
-ADD accessibility INTEGER;;
+ADD accessibility INTEGER,
+add image_url VARCHAR(1024);

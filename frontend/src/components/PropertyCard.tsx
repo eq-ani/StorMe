@@ -33,4 +33,3 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
 };
 
 export default PropertyCard;
-
