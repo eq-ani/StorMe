@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
 
       <div className="hidden md:block">
         <button
-          className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-all duration-400 ease-in-out hover:bg-[#881c1c] hover:text-white"
+          className="bg-[#881c1c] text-white px-4 py-2 rounded-lg transition-all duration-400 ease-in-out hover:bg-white hover:text-[#881c1c]"
           onClick={() => {
             window.location.href = "/login";
           }}
