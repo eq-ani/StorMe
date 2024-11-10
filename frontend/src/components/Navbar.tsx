@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
       className={`absolute top-0 left-0 w-full h-24 z-10 flex items-center justify-between py-4 px-8 text-white transition-all duration-400 ease-in-out ${
         isLandingPage
           ? "bg-transparent hover:bg-black hover:bg-opacity-15"
-          : "bg-black bg-opacity-15"
+          : "bg-[#881c1c] bg-opacity-15"
       }`}
     >
       <div className="flex gap-6">
@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
               alt="StorMe Logo"
               className="h-12 w-auto"
             />
-            <p className="text-3xl text-[#212721]">StorMe</p>
+            <p className="text-3xl text-[#881c1c]">StorMe</p>
           </a>
         </div>
         <button
@@ -31,13 +31,13 @@ const Navbar: React.FC = () => {
             window.location.href = "/search";
           }}
         >
-          <Search size={32} color="#212721" />
+          <Search size={32} color="#881c1c" />
         </button>
       </div>
 
       <div className="hidden md:block">
         <button
-          className="bg-white text-gray-800 px-4 py-2 rounded-lg transition-all duration-400 ease-in-out hover:bg-[#212721] hover:text-white"
+          className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-all duration-400 ease-in-out hover:bg-[#881c1c] hover:text-white"
           onClick={() => {
             window.location.href = "/login";
           }}
