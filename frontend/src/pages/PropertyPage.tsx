@@ -100,7 +100,7 @@ const PropertyPage: React.FC = () => {
                   ))}
                 </div>
               </div>
-              
+              <p className="text-sm text-gray-600">"{prop.review_comm}"</p> {/* Random review */}
               <p className="text-sm text-gray-600 mt-2">- Anonymous Reviewer</p>
             </div>
           </div>

@@ -7,4 +7,6 @@ export interface Property {
   image_url: string;
   school: string;
   stays_count: number;
+  review_comm: string;
+  review_num: number;
 }
