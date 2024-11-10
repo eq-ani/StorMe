@@ -1,1 +1,1 @@
-truncate table storme.bookings_db, storme.host_db, storme.renter_db, storme.reviews_db, storme.transaction_db, storme.user_ppid RESTART IDENTITY
+truncate table storme.user_ppid restart identity cascade
