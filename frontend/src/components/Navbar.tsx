@@ -18,10 +18,10 @@ const Navbar: React.FC = () => {
         <button
           className="bg-white text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200"
           onClick={() => {
-            window.location.href = "/signup";
+            window.location.href = "/login";
           }}
         >
-          Login
+          Signup/Login
         </button>
       </div>
     </nav>

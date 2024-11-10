@@ -4,6 +4,7 @@ import Landing from "../pages/Landing";
 import Search from "../pages/Search";
 import Signup from "../pages/Signup";
 import Property from "../pages/Property"; // Import the Property page
+import Login from "../pages/Login";
 
 const App: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/search" element={<Search />} />
         <Route path="/signup" element={<Signup />} />
-        
+        <Route path ="/login" element={<Login />} />
         
         <Route path="/property/:id" element={<Property />} /> 
       </Routes>
