@@ -119,11 +119,11 @@ const Search: React.FC = () => {
         className="flex justify-center pt-8 z-20 relative w-1/4"
         ref={dropdownRef}
       >
-        <div className="flex items-center justify-between w-full bg-stone-200 rounded-full pl-4 pr-2 py-2">
+        <div className="flex items-center justify-between w-full bg-stone-300 rounded-full pl-4 pr-2 py-2 border border-[#881c1c] shadow-lg hover:shadow-md focus-within:shadow-md transition-shadow duration-300">
           <input
             type="text"
-            placeholder="Find your institution..."
-            className="bg-stone-200 text-black text-sm w-full outline-none"
+            placeholder="Choose your institution..."
+            className="bg-stone-300 text-black text-sm w-full outline-none"
             value={selectedSchool}
             readOnly
             onClick={() => setShowDropdown(!showDropdown)}
@@ -135,7 +135,7 @@ const Search: React.FC = () => {
                 setFilteredProperties(properties);
                 setShowDropdown(false);
               }}
-              className="text-sm text-gray-700 hover:text-white hover:bg-[#881c1c] rounded-full px-2"
+              className="text-sm text-gray-800 hover:text-white hover:bg-[#881c1c] rounded-full px-2"
             >
               Reset
             </button>
@@ -160,7 +160,7 @@ const Search: React.FC = () => {
       </div>
       <div className="flex justify-center pt-16 w-full">
         <div className="w-3/4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProperties.map((property) => (
               <PropertyCard key={property.id} property={property} />
             ))}
