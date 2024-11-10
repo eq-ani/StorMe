@@ -12,8 +12,15 @@ CREATE TABLE storme.host_db (
     state_province VARCHAR(50),
     postal_code VARCHAR(20),
     country VARCHAR(50),
+    school VARCHAR(255),
+    active BOOLEAN
+    temp_control BOOLEAN,
+    allergen_free BOOLEAN,
+    big_access BOOLEAN,
+    accessibility INTEGER
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
 
     FOREIGN KEY (user_id) REFERENCES storme.user_ppid(id)
 );
