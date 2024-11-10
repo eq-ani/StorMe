@@ -6,14 +6,17 @@
 
  - The above image illustrates how we may provide security to the customer by providing them with bags and custom zip ties they write their information on to prevent tampering.
 
- ## Prerequisites
+## Prerequisites
  - PostgreSQL
  - Docker
  - Azure Data Studio (or some other database tool)
  - Node.js
-
- ## Running Directions
- - Install dependencies using `npm install`
- - Run `docker-compose up -d` in the root diriectory
- - cd to backend and run `node server.js`
- - open another terminal, cd to front end and run `npm start`
+ 
+## Running Directions
+1. Run `docker-compose up -d` in the root directory.
+2. In a terminal, navigate to the `backend` directory:
+   - Run `npm install`
+   - Start the backend server with `npm start` or `node server.js`
+3. Open a new terminal, navigate to the `frontend` directory:
+   - Run `npm install`
+   - Start the frontend with `npm start`
