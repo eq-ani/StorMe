@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import PropertyCard from "../components/PropertyCard";
 
@@ -41,7 +41,35 @@ const fakeProperties = [
   },
 ];
 
+interface Property {
+  id: number;
+  address_line_1: string;
+  price: number;
+  size: string;
+  image_url: string;
+}
+
 const Search: React.FC = () => {
+  const [properties, setProperties] = useState<Property[]>([]); // State for storing properties
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  useEffect(() => {
+    // Fetch properties from the backend when the component mounts
+    const fetchProperties = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/properties"); // Backend API endpoint
+        if (!response.ok) {
+          throw new Error("Failed to fetch properties");
+        }
+        const data = await response.json();
+        setProperties(data); // Set the fetched properties in state
+      } catch (error) {
+        console.error("Error fetching properties:", error);
+      }
+    };
+    fetchProperties();
+  }, []);
+  
   return (
     <div>
       <Navbar />
@@ -57,7 +85,7 @@ const Search: React.FC = () => {
       <div className="flex justify-center pt-16">
         <div className="w-3/4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {fakeProperties.map((property) => (
+            {properties.map((property) => (
               <PropertyCard key={property.id} property={property} />
             ))}
           </div>
