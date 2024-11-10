@@ -18,7 +18,7 @@ CREATE TABLE storme.user_ppid (
     state_province VARCHAR(50),
     postal_code VARCHAR(20),
     country VARCHAR(50),
-    username VARCHAR(50) UNIQUE NOT NULL,
+    username VARCHAR(50),
     password_hash VARCHAR(255) NOT NULL,
     security_questions JSONB,  -- JSON format for flexibility
     government_id_type VARCHAR(50),
