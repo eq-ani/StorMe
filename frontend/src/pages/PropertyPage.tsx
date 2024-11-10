@@ -70,7 +70,7 @@ const PropertyPage: React.FC = () => {
             <div className="bg-gray-50 p-4 rounded-lg mb-6 mt-12">
               <div className="flex flex-col items-center pt-6">
                 <img
-                  src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                  src={person.profile_picture_url}
                   alt={person.first_name + " " + person.last_name}
                   className="w-32 h-32 rounded-full object-cover mb-4"
                 />

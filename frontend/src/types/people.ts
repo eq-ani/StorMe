@@ -4,4 +4,5 @@ export interface people {
     last_name: string;
     phone_number: string;
     email: string;
+    profile_picture_url: string;
   }

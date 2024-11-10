@@ -6,7 +6,7 @@ CREATE TABLE storme.user_ppid (
     preferred_name VARCHAR(100),
     gender VARCHAR(50),
     date_of_birth DATE,
-    profile_picture_url VARCHAR(255),
+    profile_picture_url VARCHAR(1024),
     email VARCHAR(255) UNIQUE NOT NULL,
     secondary_email VARCHAR(255),
     phone_number VARCHAR(20),

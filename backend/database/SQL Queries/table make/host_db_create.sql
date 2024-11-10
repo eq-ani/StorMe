@@ -4,6 +4,8 @@ CREATE TABLE storme.host_db (
     property_id SERIAL UNIQUE,  -- Unique identifier for each property
     price DECIMAL(10, 2) NOT NULL,
     size VARCHAR(50),  -- E.g., "10x10 ft", "20x15 ft"
+    review_comm VARCHAR(255),
+    review_num INTEGER,
     stays_count INT DEFAULT 0,  -- Number of stays hosted
     stars_avg DECIMAL(2, 1) DEFAULT 0,  -- Average star rating
     address_line_1 VARCHAR(255),
