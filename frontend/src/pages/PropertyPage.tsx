@@ -23,7 +23,47 @@ const PropertyPage: React.FC = () => {
   const propertyId = id ? parseInt(id, 10) : null;
   const [isModalOpen, setIsModalOpen] = useState(false); // for the booking form
 
+  // for form submission
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
   const toggleModal = () => setIsModalOpen(!isModalOpen);
+
+  const handleSubmitRentalRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!startDate || !endDate) {
+      setError("Please fill in both start and end dates.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/rentals", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          property_id: propertyId,
+          start_date: startDate,
+          end_date: endDate,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Rental request submitted successfully!");
+        setStartDate("");
+        setEndDate("");
+        toggleModal();
+      } else {
+        setError(data.message || "Failed to submit rental request.");
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setError("An error occurred. Please try again.");
+    }
+  };
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -147,34 +187,48 @@ const PropertyPage: React.FC = () => {
               {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                   <div className="bg-white p-6 rounded-lg shadow-lg w-80">
-                    <h2 className="text-lg font-semibold mb-4">
-                      Request to Rent
-                    </h2>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Start Date
-                      <input
-                        type="date"
-                        className="mt-1 block w-full px-3 py-2 border rounded-md"
-                      />
-                    </label>
-                    <label className="block text-sm font-medium text-gray-700 mt-4">
-                      End Date
-                      <input
-                        type="date"
-                        className="mt-1 block w-full px-3 py-2 border rounded-md"
-                      />
-                    </label>
-                    <div className="flex justify-end mt-6">
-                      <button
-                        onClick={toggleModal}
-                        className="text-gray-500 mr-4"
-                      >
-                        Cancel
-                      </button>
-                      <button className="bg-[#881c1c] text-white rounded-md px-4 py-2">
-                        Confirm
-                      </button>
-                    </div>
+                    <h2 className="text-lg mb-4">Request to Rent</h2>
+                    {error && (
+                      <p className="text-red-500 text-center">{error}</p>
+                    )}
+                    <form
+                      onSubmit={handleSubmitRentalRequest}
+                      className="flex flex-col gap-4"
+                    >
+                      <label className="block text-sm text-gray-700">
+                        Start Date
+                        <input
+                          type="date"
+                          value={startDate}
+                          onChange={(e) => setStartDate(e.target.value)}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </label>
+                      <label className="block text-sm text-gray-700">
+                        End Date
+                        <input
+                          type="date"
+                          value={endDate}
+                          onChange={(e) => setEndDate(e.target.value)}
+                          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                      </label>
+                      <div className="flex justify-end mt-4">
+                        <button
+                          type="button"
+                          onClick={toggleModal}
+                          className="text-gray-500 mr-4"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          className="bg-[#881c1c] text-white rounded-md px-4 py-2 hover:bg-[#701515]"
+                        >
+                          Confirm
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               )}
