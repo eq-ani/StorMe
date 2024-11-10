@@ -18,7 +18,14 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
         />
 
         <div className="p-4 flex flex-col">
-          <h2 className="text-xl font-bold mb-2">{property.address_line_1}</h2>
+          <div className="flex justify-between">
+            <h2 className="text-xl font-bold mb-2">
+              {property.address_line_1}
+            </h2>
+            <h3 className="bg-gray-600 rounded-full px-3 py-1 text-xs font-semibold text-white flex items-center">
+              {property.school}
+            </h3>
+          </div>
           <p className="text-sm">${property.price}/month</p>
           <div className="text-sm">{property.size}</div>
         </div>

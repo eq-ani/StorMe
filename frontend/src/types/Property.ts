@@ -4,4 +4,5 @@ export interface Property {
   price: number;
   size: string;
   image_url: string;
+  school: string;
 }
