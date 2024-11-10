@@ -52,7 +52,6 @@ interface Property {
 const Search: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([]); // State for storing properties
 
-
   useEffect(() => {
     // Fetch properties from the backend when the component mounts
     const fetchProperties = async () => {
@@ -69,20 +68,18 @@ const Search: React.FC = () => {
     };
     fetchProperties();
   }, []);
-  
-  return (
-    <div>
-      <Navbar />
 
-      <div className="flex justify-center pt-8 z-20 relative w-full">
+  return (
+    <div className="flex flex-col items-center w-screen h-screen">
+      <Navbar />
+      <div className="flex justify-center pt-8 z-20 relative w-1/4">
         <input
           type="text"
           placeholder="Find your institution.."
-          className="w-1/4 py-2 px-4 rounded-full bg-stone-200 text-black text-sm"
+          className="w-full py-2 px-4 rounded-full bg-stone-200 text-black text-sm"
         />
       </div>
-
-      <div className="flex justify-center pt-16">
+      <div className="flex justify-center pt-16 w-full">
         <div className="w-3/4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {properties.map((property) => (
