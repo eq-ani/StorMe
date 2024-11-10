@@ -1,5 +1,6 @@
 export interface Property {
   id: number;
+  property_id: number;
   user_id: number;
   address_line_1: string;
   price: number;

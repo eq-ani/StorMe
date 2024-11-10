@@ -8,7 +8,7 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   return (
-    <Link to={`/property/${property.id}`} className="block">
+    <Link to={`/property/${property.property_id}`} className="block">
       <div className="rounded-lg overflow-hidden shadow-2xl bg-gradient-to-r from-[#881c1c] via-[#770b0b] to-[#701515] bg-opacity-90 text-white flex flex-col h-full w-full transform transition-transform duration-300 hover:-translate-y-2">
         <img
           src={property.image_url}

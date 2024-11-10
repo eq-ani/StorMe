@@ -5,6 +5,7 @@ const peopleRoutes = require('./routes/people');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const listingsRoutes = require('./routes/list');
+const bookingRoutes = require('./routes/rentals');
 
 require('dotenv').config();
 
@@ -19,6 +20,7 @@ app.use('/api', propertyRoutes);
 app.use(bodyParser.json());
 app.use('/api', authRoutes);
 app.use('/api', listingsRoutes);
+app.use('/api', bookingRoutes);
 
 
 app.listen(PORT, () => {

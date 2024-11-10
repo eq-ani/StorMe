@@ -30,41 +30,6 @@ const PropertyPage: React.FC = () => {
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
-  const handleSubmitRentalRequest = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!startDate || !endDate) {
-      setError("Please fill in both start and end dates.");
-      return;
-    }
-
-    try {
-      const response = await fetch("http://localhost:5000/api/rentals", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          property_id: propertyId,
-          start_date: startDate,
-          end_date: endDate,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("Rental request submitted successfully!");
-        setStartDate("");
-        setEndDate("");
-        toggleModal();
-      } else {
-        setError(data.message || "Failed to submit rental request.");
-      }
-    } catch (err) {
-      console.error("Fetch error:", err);
-      setError("An error occurred. Please try again.");
-    }
-  };
-
   useEffect(() => {
     const fetchProperties = async () => {
       const propertyResponse = await fetch(
@@ -84,7 +49,7 @@ const PropertyPage: React.FC = () => {
     fetchPeople();
   }, []);
 
-  const prop = properties.find((p) => p.id === propertyId);
+  const prop = properties.find((p) => p.property_id === propertyId);
   if (!prop) {
     return <div>Property not found</div>;
   }
@@ -93,6 +58,44 @@ const PropertyPage: React.FC = () => {
   if (!person) {
     return <div>Person information not found</div>;
   }
+
+  const handleSubmitRentalRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!startDate || !endDate) {
+      setError("Please fill in both start and end dates.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/rentals", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          property_id: propertyId,
+          rental_user_id: 1,
+          start_date: startDate,
+          end_date: endDate,
+          cost: prop.price,
+          status: "pending"
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Rental request submitted successfully!");
+        setStartDate("");
+        setEndDate("");
+        toggleModal();
+      } else {
+        setError(data.message || "Failed to submit rental request.");
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setError("An error occurred. Please try again.");
+    }
+  };
 
   return (
     <div className="w-screen flex flex-col items-center">
