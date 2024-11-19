@@ -1,0 +1,1 @@
+select * from storme.reviews_db
