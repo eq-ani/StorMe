@@ -1,6 +1,6 @@
 # Welcome to StorMe
 
-<video src="https://vimeo.com/1028150155" width="300" />
+<video src="https://vimeo.com/1028150155" width="300">
 
 
  - May of those who do not live nearby campus end up paying exorbitant prices over summer break a storage unit. Enter StorMe. StorMe is a smart storage solution by students for students. Rather than renting a unit, you can now rent space in another students house, providing cheaper options, shorter drives, and the opportunity to earn passive income for those offering storage. 
